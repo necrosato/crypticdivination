@@ -6,17 +6,28 @@
     <meta name="description" content="Official website of Cryptic Divination, the ultimate death metal experience.">
     <title>Cryptic Divination - Official Website</title>
     <style>
+        @font-face {
+            font-family: 'CrypticGothic';
+            src:url('assets/MediciText.otf') format("opentype")
+
+        }
+        @font-face {
+            font-family: 'Cryptic';
+            font-weight: bold;
+            src:url('assets/AcademyEngravedLetPlain.ttf') format("truetype")
+        }
+ 
         body {
             background-color: #000;
             color: #fff;
-            font-family: 'Arial Black', sans-serif;
+            font-family: 'Cryptic';
             margin: 0;
             padding: 0;
         }
 
         header {
-            background: linear-gradient(90deg, #330000, #660000);
-            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px;
             text-align: center;
         }
 
@@ -29,8 +40,8 @@
         nav {
             display: flex;
             justify-content: center;
-            background: #111;
-            padding: 10px 0;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 5px 0;
         }
 
         nav a {
@@ -44,28 +55,43 @@
             color: #ff0000;
         }
 
-        .fill {
-            background: url('assets/temp_cover.png') no-repeat center center/cover;
-            object-fit:contain;
-            background-size: cover;
-            background-position: center;
-            width: 100%;
-            height: 100%;
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero h2 {
+            font-size: 3em;
+            text-shadow: 2px 2px 5px #000;
         }
 
         section {
-            padding: 50px 20px;
+            padding: 20px 10px;
             text-align: center;
+            background: rgba(0, 0, 0, 0.8);
+            margin: 10px;
+        }
+
+        .image-section {
+            text-align: center;
+            margin: 10px;
+            padding: 10px;
+        }
+
+        .image-section img {
+            max-width: 100%;
+            height: auto;
+            border: 5px solid #fff;
         }
 
         .tour-dates {
-            background: #222;
-            margin: 20px 0;
-            padding: 20px;
+            margin: 10px 0;
+            padding: 10px;
         }
 
         .tour-dates h3 {
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
         .tour-dates ul {
@@ -74,14 +100,14 @@
         }
 
         .tour-dates li {
-            margin: 10px 0;
+            margin: 5px 0;
         }
 
         footer {
-            background: #111;
+            background: rgba(0, 0, 0, 0.9);
             color: #888;
             text-align: center;
-            padding: 10px 0;
+            padding: 5px 0;
         }
 
         footer a {
@@ -93,7 +119,7 @@
 <body>
     <header>
         <h1>Cryptic Divination</h1>
-        <p>The Ultimate Death Metal Experience</p>
+        <p>Get Your Ear Holes Ready</p>
     </header>
 
     <nav>
@@ -104,27 +130,29 @@
         <a href="#contact">Contact</a>
     </nav>
 
-    <div class="fill">
-        <h2>Test</h2>
+    <div class="hero">
+        <h2>New Music Coming Soon!</h2>
     </div>
+
+    <section class="image-section">
+        <img src="assets/temp_cover.png" alt="New Album Cover">
+    </section>
 
     <section id="about">
         <h2>About Us</h2>
-        <p>Cryptic Divination has been delivering skull-crushing riffs and bone-shaking beats since [Year].</p>
+        <p>Cryptic Divination has been prophesizing the audible apocalypse since 2024.</p>
     </section>
 
     <section id="tour" class="tour-dates">
-        <h3>Upcoming Tour Dates</h3>
+        <h3>Upcoming Shows</h3>
         <ul>
-            <li>Jan 25 - Los Angeles, CA - Venue Name</li>
-            <li>Feb 10 - New York, NY - Venue Name</li>
-            <li>Mar 5 - Chicago, IL - Venue Name</li>
+            <li>Feb 4 - Eugene, OR - John Henry's</li>
         </ul>
     </section>
 
     <section id="music">
         <h2>Our Music</h2>
-        <p>Listen to our latest album on <a href="#">Spotify</a> or <a href="#">Apple Music</a>.</p>
+        <p>Listen to us on <a href="#">Spotify</a> or <a href="#">Apple Music</a>.</p>
     </section>
 
     <section id="merch">
@@ -133,8 +161,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2025 Cryptic Divination. All rights reserved. | Follow us on <a href="#">Instagram</a> and <a href="#">Facebook</a>.</p>
+        <p>&copy; 2024 Cryptic Divination. All rights reserved. | Follow us on <a href="#">Instagram</a> and <a href="#">Facebook</a>.</p>
     </footer>
 </body>
 </html>
-
