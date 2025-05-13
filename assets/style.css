@@ -60,14 +60,12 @@ nav a:hover {
 }
 
 section {
-	padding: 20px 10px;
 	text-align: center;
 	background: rgba(0, 0, 0, 0.8);
 }
 
 .image-section {
 	text-align: center;
-	padding: 10px;
 }
 
 .image-section img {
@@ -86,7 +84,6 @@ footer {
 	background: rgba(0, 0, 0, 0.9);
 	color: #888;
 	text-align: center;
-	padding: 5px 0;
 }
 
 footer a {
