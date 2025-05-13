@@ -12,6 +12,9 @@
       "venue": "John Henry's",
       "location": "Eugene, OR",
       "bands": ["Malevolent Instinct", "Cryptic Divination", "Pentagram"],
+      "links": [
+          "https://www.simpletix.com/e/pentagram-tickets-198154"
+      ],
       "name": "Our First Show"
     },
     {
@@ -37,6 +40,12 @@
       "venue": "John Henry's",
       "location": "Eugene, OR",
       "bands": ["Fire Priestess", "Cryptic Divination", "Blistered Earth"]
+    },
+    {
+      "date": "2025/09/18",
+      "venue": "John Henry's",
+      "location": "Eugene, OR",
+      "bands": ["Cryptic Divination", "Nott", "Armed for Apocalypse", "Anciients"]
     }
   ]
   </script>
@@ -153,6 +162,12 @@
         <strong>Lineup:</strong>
         <ol>${show.bands.map(b => `<li>${b}</li>`).join("")}</ol>
       `;
+      if (show.links) {
+          details.innerHTML += `
+            <strong>Links:</strong>
+            <ol>${show.links.map(b => `<li><a href="${b}">${b}</a></li>`).join("")}</ol>
+          `;
+      }
 
       summary.addEventListener("click", () => {
         details.style.display = details.style.display === "block" ? "none" : "block";
