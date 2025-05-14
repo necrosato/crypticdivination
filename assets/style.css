@@ -91,7 +91,14 @@ footer a {
 	text-decoration: none;
 }
 
+@keyframes blink {
+  from { color: white; }
+  to { color: red; }
+  from { color: red; }
+  to { color: white; }
+}
 .instagram-link a {
+    animation: blink 0.5s infinite alternate;
 	font-size:24px;
 	background:black;
 	border-color:white;
