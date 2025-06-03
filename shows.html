@@ -138,8 +138,12 @@
     const pastList = document.getElementById("past-shows");
 
     shows.sort((a, b) => new Date(b.date) - new Date(a.date));
+    const upcoming = shows.filter((show)=>new Date(show.date) >= today);
+    console.log(upcoming, shows);
+    upcoming.reverse();
+    const past = shows.filter((show)=>new Date(show.date) < today);
 
-    shows.forEach(show => {
+    upcoming.concat(past).forEach(show => {
       const showDate = new Date(show.date);
 	  //comment out for chronological, uncomment for headliner first
 	  const display_order = [...show.bands]
