@@ -51,10 +51,24 @@
   </script>
   <link rel="stylesheet" href="assets/style.css">
   <style>
+
+.background-image {
+  background-image: url('assets/born_to_be_witch.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.2; /* optional transparency */
+  position: fixed; /* or absolute */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
     .show-dates {
       padding: 20px 10px;
       text-align: center;
-      background: rgba(0, 0, 0, 0.8);
     }
 
 .show-dates ul {
@@ -75,9 +89,8 @@
     max-width: 80vw;
     border: 1px solid #444;
     border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.05);
+    background: rgba(0, 0, 0, 0.8);
     text-align: left;
-    font-family: 'Cryptic';
     transition: all 0.3s ease;
 }
 
@@ -106,10 +119,11 @@
 .show-details ol {
     padding-left: 20px;
 }
-
   </style>
 </head>
 <body>
+
+  <div class="background-image"></div>
 
     <header></header>
   <nav>
@@ -169,11 +183,11 @@
       if (show.links) {
           details.innerHTML += `
             <strong>Links:</strong>
-            <ol>${show.links.map(b => `<li><a href="${b}">${b}</a></li>`).join("")}</ol>
+            <ol>${show.links.map(b => `<li><a href="${b}" target="_blank">${b}</a></li>`).join("")}</ol>
           `;
       }
 
-      summary.addEventListener("click", () => {
+      li.addEventListener("click", () => {
         details.style.display = details.style.display === "block" ? "none" : "block";
       });
 
