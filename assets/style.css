@@ -62,12 +62,18 @@ section {
 }
 
 .image-section {
-	text-align: center;
+        text-align: center;
+        background-image: url('Cryptic Divination_JAN 2025.jpg');
+        background-size: cover;
+        background-position: center;
+        min-height: 75vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 }
 
 .image-section img {
-	max-width: 100%;
-	height: auto;
+        display: none;
 }
 .about img {
 	max-width: 65%;
