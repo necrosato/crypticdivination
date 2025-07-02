@@ -71,6 +71,16 @@ section {
         justify-content: center;
 }
 
+.image-section .instagram-link {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+}
+
 .image-section::before {
         content: "";
         position: absolute;
