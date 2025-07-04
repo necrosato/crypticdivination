@@ -1,90 +1,106 @@
 @font-face {
-	font-family: 'CrypticGothic';
-	src:url('MediciText.otf') format("opentype")
+        font-family: 'CrypticGothic';
+        src:url('MediciText.otf') format("opentype")
 
 }
 @font-face {
-	font-family: 'Cryptic';
-	font-weight: bold;
-	src:url('AcademyEngravedLetPlain.ttf') format("truetype")
+        font-family: 'Cryptic';
+        font-weight: bold;
+        src:url('AcademyEngravedLetPlain.ttf') format("truetype")
+}
+@font-face {
+        font-family: 'CrypticTitle';
+        src:url('Chomsky.otf') format("opentype");
 }
 
 body {
-	background-color: #000;
-	color: #fff;
-    font-family: 'Cryptic', sans-serif;
-	font-size: 16px;
-	margin: 0;
-	padding: 0;
+        background: radial-gradient(circle at top, #111 0%, #000 80%);
+        color: #e8e8e8;
+        font-family: 'CrypticGothic', serif;
+        font-size: 16px;
+        margin: 0;
+        padding: 0;
 }
 
-header {
-	padding: 10px;
-	text-align: center;
+header.hero {
+        background:url('cryptic_cover_transparent_black_10_percent.png') center/cover no-repeat;
+        position: relative;
+        height: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 }
 
-header h1 {
-	font-size: 3em;
-	text-transform: uppercase;
-	letter-spacing: 5px;
+header.hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.7);
+        z-index: 0;
+}
+
+header.hero h1 {
+        position: relative;
+        font-family: 'CrypticTitle', serif;
+        font-size: 4em;
+        color: #fff;
+        text-shadow: 0 0 15px #b30000;
+        margin: 0;
 }
 
 nav {
-	display: flex;
-	justify-content: center;
-	padding: 5px 0;
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+        background:#111;
+        position: sticky;
+        top:0;
+        z-index:10;
 }
 
 nav a {
-	color: #fff;
-	text-decoration: none;
-	margin: 0 15px;
-	font-size: 1.2em;
+        color: #eee;
+        text-decoration: none;
+        margin: 0 15px;
+        font-size: 1.1em;
+        transition: color 0.3s ease;
 }
 
 nav a:hover {
-	color: #ff0000;
-}
-
-.hero {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.hero h2 {
-	font-size: 3em;
-	text-shadow: 2px 2px 5px #000;
+        color: #b30000;
 }
 
 section {
-	text-align: center;
+        text-align: center;
 }
 
 .image-section {
-	text-align: center;
+        text-align: center;
 }
 
 .image-section img {
-	max-width: 100%;
-	height: auto;
+        max-width: 100%;
+        height: auto;
 }
 .about img {
-	max-width: 65%;
-	height: auto;
+        max-width: 65%;
+        height: auto;
 }
 a {
-	color: #ff0000;
+        color: #b30000;
 }
 
 footer {
-	color: #888;
-	text-align: center;
+        color: #888;
+        text-align: center;
 }
 
 footer a {
-	color: #ff0000;
-	text-decoration: none;
+        color: #b30000;
+        text-decoration: none;
 }
 
 @keyframes blink {
@@ -107,5 +123,5 @@ footer a {
 }
 
 .instagram-link a:hover {
-	color: #ff0000;
+        color: #b30000;
 }
