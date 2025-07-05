@@ -118,6 +118,8 @@ a.button-link {
     border-width:1px;
     border-style:solid;
     display:inline-block;
+    width:200px;
+    text-align:center;
 }
 
 .instagram-link a:hover {
