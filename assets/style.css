@@ -108,6 +108,7 @@ footer a {
     display:block;
     width:300px;
     text-align:center;
+    line-height:24px;
     margin:0 auto 10px;
 }
 
@@ -122,11 +123,10 @@ a.button-link {
     border-radius:10px;
     border-width:1px;
     border-style:solid;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    display:block;
     width:300px;
     text-align:center;
+    line-height:24px;
     margin:0 auto 10px;
 }
 
