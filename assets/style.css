@@ -126,3 +126,31 @@ footer a {
         width: 100%;
         height: 100%;
 }
+
+/* Responsive grid for Instagram posts */
+#instafeed {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* exactly 3 posts per row */
+        gap: 15px;
+        margin: 20px auto;
+        max-width: 900px;
+}
+
+#instafeed a {
+        display: block;
+        overflow: hidden;
+        border-radius: 8px;
+}
+
+#instafeed img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+#instafeed a:hover img {
+        transform: scale(1.05);
+        opacity: 0.8;
+}

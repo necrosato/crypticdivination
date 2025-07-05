@@ -52,6 +52,11 @@
           <iframe width="560" height="315" src="https://www.youtube.com/embed/FDVtaBR8YVc" title="Cryptic Divination" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
 
+        <section id="instagram" class="instagram-feed">
+            <h2>Latest on Instagram</h2>
+            <div id="instafeed"></div>
+        </section>
+
 
     <section id="music">
         <h2>Our Music</h2>
@@ -69,5 +74,16 @@
     <footer>
         <p>&copy; 2024 Cryptic Divination. All rights reserved. | Follow us on <a href="https://www.instagram.com/crypticdivination/" target="_blank">Instagram</a> and <a href="https://www.youtube.com/@crypticdivination1886" target="_blank">YouTube</a>.</p>
     </footer>
+    <script src="https://unpkg.com/instafeed.js@2/dist/instafeed.min.js"></script>
+    <script>
+        // Initialize Instafeed.js to display 9 recent posts
+        const feed = new Instafeed({
+            accessToken: 'YOUR_ACCESS_TOKEN', // replace with a valid token
+            limit: 9,
+            target: 'instafeed',
+            template: '<a href="{{link}}" target="_blank"><img src="{{image}}" alt="{{caption}}"></a>'
+        });
+        feed.run();
+    </script>
 </body>
 </html>
