@@ -110,6 +110,24 @@ footer a {
         color: #ff0000;
 }
 
+.instagram-tiles {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        overflow: hidden;
+        max-width: 540px;
+        margin-left: auto;
+        margin-right: auto;
+}
+
+.instagram-tiles iframe {
+        border: none;
+        width: 540px;
+        height: 250px;
+        transform: translateY(-60px);
+        pointer-events: none;
+}
+
 .youtube-video {
         position: relative;
         padding-bottom: 56.25%;
