@@ -95,19 +95,37 @@ footer a {
 }
 .instagram-link a {
     animation: blink 0.5s infinite alternate;
-	font-size:24px;
-	background:black;
-	border-color:white;
-	color:white;
-	padding:10px 20px;
-	text-decoration:none;
-	border-radius:10px;
-	border-width:1px;
-	border-style:solid;
+        font-size:24px;
+        background:black;
+        border-color:white;
+        color:white;
+        padding:10px 20px;
+        text-decoration:none;
+        border-radius:10px;
+        border-width:1px;
+        border-style:solid;
+}
+
+a.button-link {
+    animation: blink 0.5s infinite alternate;
+    font-size:24px;
+    background:black;
+    border-color:white;
+    color:white;
+    padding:10px 20px;
+    text-decoration:none;
+    border-radius:10px;
+    border-width:1px;
+    border-style:solid;
+    display:inline-block;
 }
 
 .instagram-link a:hover {
         color: #ff0000;
+}
+
+a.button-link:hover {
+    color: #ff0000;
 }
 
 .youtube-video {
