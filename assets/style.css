@@ -107,5 +107,22 @@ footer a {
 }
 
 .instagram-link a:hover {
-	color: #ff0000;
+        color: #ff0000;
+}
+
+.youtube-video {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        margin-top: 20px;
+        text-align: center;
+}
+
+.youtube-video iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
 }
