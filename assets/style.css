@@ -124,7 +124,7 @@ a.button-link {
     display:block;
     width:300px;
     text-align:center;
-    margin:0;
+    margin:10px auto;
 }
 
 .instagram-link a:hover {
@@ -135,7 +135,6 @@ a.button-link {
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:10px;
     margin:20px 0;
 }
 
