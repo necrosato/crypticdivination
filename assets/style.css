@@ -124,11 +124,19 @@ a.button-link {
     display:block;
     width:300px;
     text-align:center;
-    margin:10px auto;
+    margin:0;
 }
 
 .instagram-link a:hover {
         color: #ff0000;
+}
+
+.button-group {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+    margin:20px 0;
 }
 
 a.button-link:hover {
