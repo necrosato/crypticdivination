@@ -163,3 +163,11 @@ a.button-link:hover {
         width: 100%;
         height: 100%;
 }
+
+@media (min-width: 768px) {
+    .youtube-video {
+        max-width: 560px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
