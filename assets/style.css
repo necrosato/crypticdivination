@@ -152,8 +152,16 @@ a.button-link:hover {
     max-width: 560px;
     margin-left: auto;
     margin-right: auto;
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
 }
 
 .youtube-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
 }
