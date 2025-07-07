@@ -24,9 +24,8 @@ header {
 }
 
 header h1 {
-	font-size: 3em;
-	text-transform: uppercase;
-	letter-spacing: 5px;
+        font-size: 3em;
+        text-transform: uppercase;
 }
 
 nav {
