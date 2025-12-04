@@ -41,13 +41,6 @@ nav a {
         font-size: 1.2em;
 }
 
-nav a.download-button {
-        border: 1px solid #fff;
-        padding: 8px 16px;
-        border-radius: 8px;
-        background: #111;
-}
-
 nav a:hover {
         color: #ff0000;
 }
