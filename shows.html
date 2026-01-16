@@ -209,14 +209,16 @@
   <script>
     const shows = JSON.parse(document.getElementById("show-data").textContent);
     const today = new Date();
+    const todayStart = new Date(today);
+    todayStart.setHours(0, 0, 0, 0);
     const upcomingList = document.getElementById("upcoming-shows");
     const pastList = document.getElementById("past-shows");
 
     shows.sort((a, b) => new Date(b.date) - new Date(a.date));
-    const upcoming = shows.filter((show)=>new Date(show.date) >= today);
+    const upcoming = shows.filter((show)=>new Date(show.date) >= todayStart);
     console.log(upcoming, shows);
     upcoming.reverse();
-    const past = shows.filter((show)=>new Date(show.date) < today);
+    const past = shows.filter((show)=>new Date(show.date) < todayStart);
 
     upcoming.concat(past).forEach(show => {
       const showDate = new Date(show.date);
@@ -258,7 +260,7 @@
       li.appendChild(summary);
       li.appendChild(details);
 
-      if (showDate >= today) {
+      if (showDate >= todayStart) {
         upcomingList.appendChild(li);
       } else {
         pastList.appendChild(li);
