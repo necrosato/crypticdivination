@@ -1,3 +1,9 @@
+@font-face {
+  font-family: 'Cryptic';
+  font-weight: bold;
+  src: url('../assets/AcademyEngravedLetPlain.ttf') format('truetype');
+}
+
 :root {
   --bg: #000;
   --fg: #f4f4f4;
@@ -13,7 +19,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--fg);
-  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Cryptic', sans-serif;
   padding-bottom: 90px;
 }
 
