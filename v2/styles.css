@@ -39,10 +39,16 @@ footer {
   width: min(960px, 100%);
 }
 
-.logo-image {
+.logo-crop {
   width: min(540px, 92%);
-  display: block;
   margin: 0 auto;
+  overflow: hidden;
+}
+
+.logo-image {
+  width: 100%;
+  display: block;
+  margin: -10% auto;
   filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.08));
 }
 
@@ -124,7 +130,7 @@ footer a {
     gap: 1.5rem;
   }
 
-  .logo-image {
+  .logo-crop {
     width: min(420px, 100%);
   }
 
