@@ -48,7 +48,7 @@ footer {
 .logo-image {
   width: 100%;
   display: block;
-  margin: -10% auto;
+  margin: -20% auto;
   filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.08));
 }
 
