@@ -185,16 +185,6 @@ footer a {
   z-index: -1;
 }
 
-.shows-header {
-  text-align: center;
-  margin-top: 0.5rem;
-}
-
-.shows-header h1 {
-  margin: 0;
-  letter-spacing: 0.18em;
-  font-size: clamp(1.3rem, 2.7vw, 2rem);
-}
 
 .shows-list {
   width: min(960px, 100%);
