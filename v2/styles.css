@@ -155,3 +155,84 @@ footer a {
     max-width: none;
   }
 }
+
+.shows-page {
+  position: relative;
+}
+
+.shows-background {
+  position: fixed;
+  inset: 0;
+  background: url('../assets/new_emblem_black_white_outline.png') center/140vmax no-repeat;
+  opacity: 0.22;
+  transform: scale(1.2);
+  transform-origin: center;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.shows-header {
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.shows-header h1 {
+  margin: 0;
+  letter-spacing: 0.18em;
+  font-size: clamp(1.3rem, 2.7vw, 2rem);
+}
+
+.shows-list {
+  width: min(960px, 100%);
+  padding-bottom: 2rem;
+}
+
+.shows-list h2 {
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+
+.shows-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.show-entry {
+  width: min(880px, 100%);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.82);
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.show-summary {
+  text-align: center;
+  font-size: 1.05rem;
+  font-weight: bold;
+}
+
+.show-summary:hover {
+  color: var(--muted);
+}
+
+.show-details {
+  display: none;
+  margin-top: 0.75rem;
+  color: #d0d0d0;
+  line-height: 1.5;
+}
+
+.show-details ol {
+  margin: 0.3rem 0 0.5rem;
+  padding-left: 1.3rem;
+}
+
+.show-details a {
+  color: #bfc7ff;
+}
