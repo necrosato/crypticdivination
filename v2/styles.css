@@ -186,7 +186,7 @@ footer a {
 .shows-background {
   position: absolute;
   inset: 0;
-  background: url('../assets/new_emblem_black_white_outline.png') top center/140vmax no-repeat;
+  background: url('../assets/new_emblem_black_white_outline.png') center -20%/140vmax no-repeat;
   opacity: 0.22;
   pointer-events: none;
   z-index: 0;
