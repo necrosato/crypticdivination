@@ -35,6 +35,7 @@ body {
 .logo-section,
 .photo-section,
 .youtube-video,
+.content-with-bg,
 footer {
   width: min(960px, 100%);
 }
@@ -166,15 +167,29 @@ footer a {
   position: relative;
 }
 
+.content-with-bg {
+  position: relative;
+  width: min(960px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 0.25rem 0;
+}
+
+.content-with-bg > *:not(.shows-background) {
+  position: relative;
+  z-index: 1;
+}
+
 .shows-background {
-  position: fixed;
+  position: absolute;
   inset: 0;
-  background: url('../assets/new_emblem_black_white_outline.png') center/140vmax no-repeat;
+  background: url('../assets/new_emblem_black_white_outline.png') center top/140vmax no-repeat;
   opacity: 0.22;
   transform: scale(1.2);
-  transform-origin: center;
+  transform-origin: center top;
   pointer-events: none;
-  z-index: -1;
+  z-index: 0;
 }
 
 .shows-header {

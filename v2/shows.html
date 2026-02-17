@@ -136,8 +136,6 @@
   </script>
 </head>
 <body class="shows-page">
-  <div class="shows-background" aria-hidden="true"></div>
-
   <main class="v2-page">
     <section class="logo-section" aria-label="Band logo">
       <div class="logo-crop">
@@ -151,12 +149,16 @@
       <a href="#past">Past</a>
     </nav>
 
-    <section class="shows-list" aria-label="Show dates">
-      <h2 id="upcoming">Upcoming Shows</h2>
-      <ul id="upcoming-shows"></ul>
+    <section class="content-with-bg" aria-label="Show dates">
+      <div class="shows-background" aria-hidden="true"></div>
 
-      <h2 id="past">Past Shows</h2>
-      <ul id="past-shows"></ul>
+      <section class="shows-list">
+        <h2 id="upcoming">Upcoming Shows</h2>
+        <ul id="upcoming-shows"></ul>
+
+        <h2 id="past">Past Shows</h2>
+        <ul id="past-shows"></ul>
+      </section>
     </section>
   </main>
 
