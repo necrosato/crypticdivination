@@ -1,83 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Cryptic Divination - Official Website">
-    <title>Cryptic Divination - Official Website</title>
-    <link rel="stylesheet" href="assets/style.css">
-    <style>
-      .background-image {
-        background-image: url('assets/Cryptic Divination_JAN 2025.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: top center;
-        opacity: 0.2;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        z-index: -1;
-      }
-
-      body * {
-        text-shadow: 2px 2px 4px #000;
-      }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cryptic Divination V2">
+  <title>Cryptic Divination | V2</title>
+  <link rel="stylesheet" href="assets/style.css">
 </head>
-<body>
-    <div class="background-image"></div>
-
-    <header>
-        <h1>CRYPTIC DIVINATION</h1>
-    </header>
-
-    <nav>
-        <a href="shows.html">Shows</a>
-        <a href="https://cryptic-divination.printify.me/" target="_blank">Merch</a>
-        <a href="about.html">About</a>
-    </nav>
-
-        <div id="instagram-link" class="instagram-link" style="text-align:center; margin-top:20px; display:flex; align-items: center; justify-content: center;">
-          <a href="https://instagram.com/crypticdivination" target="_blank" style="animation-delay:0s;">
-                📷 Follow us on Instagram
-          </a>
-        </div>
-
-
-    <section id="music">
-        <div class="button-group">
-            <a class="button-link" href="assets/Cryptic%20Divination%20-%20Cataclasis.wav" download style="animation-delay:0s;">⬇️ Download Cataclasis</a>
-            <a class="button-link" href="https://open.spotify.com/artist/2Ospy7D5b96TFFR6KbAOx3" target="_blank" style="animation-delay:0.1s;">🎧 Listen on Spotify</a>
-            <a class="button-link" href="https://music.apple.com/us/artist/cryptic-divination/1592862632" target="_blank" style="animation-delay:0.2s;">🍎 Listen on Apple Music</a>
-        </div>
+<body class="home-page">
+  <div class="shows-background" aria-hidden="true"></div>
+  <main class="v2-page">
+    <section class="logo-section" aria-label="Band logo">
+      <div class="logo-crop">
+        <img src="assets/Cryptic%20Divination%20N%20L%20W.png" alt="Cryptic Divination N L W logo" class="logo-image">
+      </div>
     </section>
 
-    <section id="merch">
-        <div class="button-group">
-            <a class="button-link" href="https://cryptic-divination.printify.me/" target="_blank" style="animation-delay:0.3s;">🛍️ Shop Official Merch</a>
-        </div>
-    </section>
-    <section id="contact">
-        <div class="button-group">
-            <a class="button-link" href="mailto:crypticdivination@gmail.com" style="animation-delay:0.4s;">📧 Contact Us</a>
-        </div>
+    <section class="links" aria-label="Music and social links">
+      <a href="shows.html">Shows</a>
+      <a href="https://cryptic-divination.printify.me/" target="_blank" rel="noopener noreferrer">Merch</a>
+      <a href="https://instagram.com/crypticdivination" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://open.spotify.com/artist/2Ospy7D5b96TFFR6KbAOx3" target="_blank" rel="noopener noreferrer">Spotify</a>
+      <a href="https://music.apple.com/us/artist/cryptic-divination/1592862632" target="_blank" rel="noopener noreferrer">Apple Music</a>
+      <a href="mailto:crypticdivination@gmail.com">Contact</a>
     </section>
 
-    <div class="youtube-video">
+    <section class="photo-section" aria-label="Band photo">
+      <div class="band-photo-crop">
+        <img src="assets/IMG_6328_cropped.jpg" alt="Cryptic Divination band photo" class="band-photo">
+      </div>
+    </section>
+
+    <div class="youtube-video" aria-label="Cryptic Divination YouTube video">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/FDVtaBR8YVc" title="Cryptic Divination" frameborder="0" allowfullscreen></iframe>
     </div>
+  </main>
 
-    <div class="audio-player" aria-label="Cataclasis audio player">
-      <p class="track-title">Cataclasis</p>
-      <audio controls preload="metadata">
-        <source src="assets/Cryptic%20Divination%20-%20Cataclasis.wav" type="audio/wav">
-        Your browser does not support the audio element.
-      </audio>
-    </div>
-    <footer>
-        <p>&copy; 2024 Cryptic Divination. All rights reserved. | Follow us on <a href="https://www.instagram.com/crypticdivination/" target="_blank">Instagram</a> and <a href="https://www.youtube.com/@crypticdivination1886" target="_blank">YouTube</a>.</p>
-    </footer>
+  <footer>
+    <p>&copy; 2024 Cryptic Divination. All rights reserved. | Follow us on <a href="https://www.instagram.com/crypticdivination/" target="_blank" rel="noopener noreferrer">Instagram</a> and <a href="https://www.youtube.com/@crypticdivination1886" target="_blank" rel="noopener noreferrer">YouTube</a>.</p>
+  </footer>
+
+  <div class="audio-player" aria-label="Cataclasis audio player">
+    <p class="track-title">Cataclasis</p>
+    <audio controls preload="metadata">
+      <source src="assets/Cryptic%20Divination%20-%20Cataclasis.wav" type="audio/wav">
+      Your browser does not support the audio element.
+    </audio>
+  </div>
 </body>
 </html>

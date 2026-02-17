@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cryptic Divination - Shows</title>
-  <!-- Embedded show data -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cryptic Divination shows and live dates" />
+  <title>Cryptic Divination | Shows</title>
+  <link rel="stylesheet" href="assets/style.css">
   <script id="show-data" type="application/json">
   [
     {
@@ -133,152 +134,85 @@
     }
   ]
   </script>
-  <link rel="preload" as="image" href="assets/born_to_be_witch35.png">
-  <link rel="stylesheet" href="assets/style.css">
-  <style>
-
-.background-image {
-  background-image: url('assets/born_to_be_witch35.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0.2; /* optional transparency */
-  position: fixed; /* or absolute */
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-}
-
-    .show-dates {
-      padding: 20px 10px;
-      text-align: center;
-    }
-
-.show-dates ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.show-dates li {
-    width: 100%;
-    max-width: 80vw;
-}
-.show-entry {
-    margin: 10px auto;
-    padding: 15px;
-    max-width: 80vw;
-    border: 1px solid #444;
-    border-radius: 10px;
-    background: rgba(0, 0, 0, 0.8);
-    text-align: left;
-    transition: all 0.3s ease;
-}
-
-.show-summary {
-    cursor: pointer;
-    font-size: 1.2em;
-    color: #fff;
-    font-weight: bold;
-    text-align: center;
-    padding: 5px;
-    text-shadow: 1px 1px 2px #000;
-}
-
-.show-summary:hover {
-    color: #ff0000;
-}
-
-.show-details {
-    display: none;
-    margin-top: 10px;
-    font-size: 0.95em;
-    color: #ccc;
-    line-height: 1.5em;
-}
-
-.show-details ol {
-    padding-left: 20px;
-}
-  </style>
 </head>
-<body>
+<body class="shows-page">
+  <div class="shows-background" aria-hidden="true"></div>
 
-  <div class="background-image"></div>
+  <main class="v2-page">
+    <section class="logo-section" aria-label="Band logo">
+      <div class="logo-crop">
+        <img src="assets/Cryptic%20Divination%20N%20L%20W.png" alt="Cryptic Divination N L W logo" class="logo-image">
+      </div>
+    </section>
 
-    <header><h1>CRYPTIC DIVINATION</h1></header>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="#upcoming">Upcoming</a>
-    <a href="#past">Past</a>
-  </nav>
+    <nav class="links" aria-label="Shows navigation">
+      <a href="index.html">Home</a>
+      <a href="#upcoming">Upcoming</a>
+      <a href="#past">Past</a>
+    </nav>
 
-  <section class="show-dates">
-    <h2 id="upcoming">Upcoming Shows</h2>
-    <ul id="upcoming-shows"></ul>
+    <section class="shows-list" aria-label="Show dates">
+      <h2 id="upcoming">Upcoming Shows</h2>
+      <ul id="upcoming-shows"></ul>
 
-    <h2 id="past">Past Shows</h2>
-    <ul id="past-shows"></ul>
-  </section>
+      <h2 id="past">Past Shows</h2>
+      <ul id="past-shows"></ul>
+    </section>
+  </main>
 
   <footer>
-    <p>&copy; 2024 Cryptic Divination. All rights reserved. | Follow us on <a href="https://www.instagram.com/crypticdivination/" target="_blank">Instagram</a> and <a href="https://www.youtube.com/@crypticdivination1886" target="_blank">YouTube</a>.</p>
+    <p>&copy; 2024 Cryptic Divination. All rights reserved. | Follow us on <a href="https://www.instagram.com/crypticdivination/" target="_blank" rel="noopener noreferrer">Instagram</a> and <a href="https://www.youtube.com/@crypticdivination1886" target="_blank" rel="noopener noreferrer">YouTube</a>.</p>
   </footer>
 
-  <!-- JS logic -->
   <script>
-    const shows = JSON.parse(document.getElementById("show-data").textContent);
+    const shows = JSON.parse(document.getElementById('show-data').textContent);
     const today = new Date();
     const todayStart = new Date(today);
     todayStart.setHours(0, 0, 0, 0);
-    const upcomingList = document.getElementById("upcoming-shows");
-    const pastList = document.getElementById("past-shows");
+    const upcomingList = document.getElementById('upcoming-shows');
+    const pastList = document.getElementById('past-shows');
 
     shows.sort((a, b) => new Date(b.date) - new Date(a.date));
-    const upcoming = shows.filter((show)=>new Date(show.date) >= todayStart);
-    console.log(upcoming, shows);
+    const upcoming = shows.filter((show) => new Date(show.date) >= todayStart);
     upcoming.reverse();
-    const past = shows.filter((show)=>new Date(show.date) < todayStart);
+    const past = shows.filter((show) => new Date(show.date) < todayStart);
 
-    upcoming.concat(past).forEach(show => {
+    upcoming.concat(past).forEach((show) => {
       const showDate = new Date(show.date);
-	  //comment out for chronological, uncomment for headliner first
-	  const display_order = [...show.bands]
-	  display_order.reverse();
-      const summaryText = `${formatDate(show.date)} - ${show.name ? show.name + ' - ' : ''} ${display_order.join(", ")} - ${show.venue} - ${show.location}`;
+      const displayOrder = [...show.bands];
+      displayOrder.reverse();
+      const summaryText = `${formatDate(show.date)} - ${show.name ? `${show.name} - ` : ''}${displayOrder.join(', ')} - ${show.venue} - ${show.location}`;
 
-      const li = document.createElement("li");
-      li.className = "show-entry";
+      const li = document.createElement('li');
+      li.className = 'show-entry';
 
-      const summary = document.createElement("div");
-      summary.className = "show-summary";
+      const summary = document.createElement('div');
+      summary.className = 'show-summary';
       summary.textContent = summaryText;
 
-      const details = document.createElement("div");
-      details.className = "show-details";
+      const details = document.createElement('div');
+      details.className = 'show-details';
       details.innerHTML = `
-        <strong>Date:</strong> ${formatDate(show.date)}<br/>
-        <strong>Venue:</strong> ${show.venue}<br/>
-        <strong>Location:</strong> ${show.location}<br/>
+        <strong>Date:</strong> ${formatDate(show.date)}<br>
+        <strong>Venue:</strong> ${show.venue}<br>
+        <strong>Location:</strong> ${show.location}<br>
         <strong>Lineup:</strong>
-        <ol>${show.bands.map(b => `<li>${b}</li>`).join("")}</ol>
+        <ol>${show.bands.map((band) => `<li>${band}</li>`).join('')}</ol>
       `;
+
       if (show.links) {
-          details.innerHTML += `
-            <strong>Links:</strong>
-            <ol>${show.links.map(b => `<li><a href="${b}" target="_blank">${b}</a></li>`).join("")}</ol>
-          `;
-      }
-      if (show.info) {
-          details.innerHTML += `<p>${show.info}</p>`;
+        details.innerHTML += `
+          <strong>Links:</strong>
+          <ol>${show.links.map((link) => `<li><a href="${link}" target="_blank" rel="noopener noreferrer">${link}</a></li>`).join('')}</ol>
+        `;
       }
 
-      li.addEventListener("click", () => {
-        details.style.display = details.style.display === "block" ? "none" : "block";
+      if (show.info) {
+        details.innerHTML += `<p>${show.info}</p>`;
+      }
+
+      li.addEventListener('click', () => {
+        details.style.display = details.style.display === 'block' ? 'none' : 'block';
       });
 
       li.appendChild(summary);
@@ -292,7 +226,7 @@
     });
 
     function formatDate(dateStr) {
-      const options = { year: "numeric", month: "short", day: "numeric" };
+      const options = { year: 'numeric', month: 'short', day: 'numeric' };
       return new Date(dateStr).toLocaleDateString(undefined, options);
     }
   </script>
