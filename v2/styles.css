@@ -169,25 +169,29 @@ footer a {
 
 .content-with-bg {
   position: relative;
-  width: min(960px, 100%);
+  width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 2rem;
-  padding: 0.25rem 0;
+  padding: 0;
 }
 
 .content-with-bg > *:not(.shows-background) {
   position: relative;
   z-index: 1;
+  width: min(960px, 100%);
 }
 
 .shows-background {
   position: absolute;
-  inset: 0;
-  background: url('../assets/new_emblem_black_white_outline.png') center top/140vmax no-repeat;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: url('../assets/new_emblem_black_white_outline.png') center top/120vmax no-repeat;
   opacity: 0.22;
-  transform: scale(1.2);
-  transform-origin: center top;
   pointer-events: none;
   z-index: 0;
 }
