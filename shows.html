@@ -168,7 +168,7 @@
       <ul id="upcoming-shows"></ul>
 
       <h2 id="past">Past Shows</h2>
-      <ul id="past-shows"></ul>
+      <div id="past-shows"></div>
     </section>
   </main>
 
@@ -181,16 +181,57 @@
     const today = new Date();
     const todayStart = new Date(today);
     todayStart.setHours(0, 0, 0, 0);
+    const upcomingHeading = document.getElementById('upcoming');
+    const pastHeading = document.getElementById('past');
     const upcomingList = document.getElementById('upcoming-shows');
-    const pastList = document.getElementById('past-shows');
+    const pastContainer = document.getElementById('past-shows');
 
     shows.sort((a, b) => new Date(b.date) - new Date(a.date));
     const upcoming = shows.filter((show) => new Date(show.date) >= todayStart);
     upcoming.reverse();
     const past = shows.filter((show) => new Date(show.date) < todayStart);
 
-    upcoming.concat(past).forEach((show) => {
+    upcomingHeading.textContent = `Upcoming Shows (${upcoming.length})`;
+    pastHeading.textContent = `Past Shows (${past.length})`;
+
+    upcoming.forEach((show) => {
       const showDate = new Date(show.date);
+      if (showDate >= todayStart) {
+        upcomingList.appendChild(createShowEntry(show));
+      }
+    });
+
+    const pastShowsByYear = past.reduce((groups, show) => {
+      const year = new Date(show.date).getFullYear();
+      if (!groups[year]) {
+        groups[year] = [];
+      }
+      groups[year].push(show);
+      return groups;
+    }, {});
+
+    Object.keys(pastShowsByYear)
+      .sort((a, b) => Number(b) - Number(a))
+      .forEach((year) => {
+        const yearSection = document.createElement('details');
+        yearSection.className = 'past-year-group';
+
+        const yearSummary = document.createElement('summary');
+        yearSummary.className = 'past-year-summary';
+        yearSummary.textContent = `${year} (${pastShowsByYear[year].length})`;
+
+        const yearList = document.createElement('ul');
+        yearList.className = 'past-year-list';
+        pastShowsByYear[year].forEach((show) => {
+          yearList.appendChild(createShowEntry(show));
+        });
+
+        yearSection.appendChild(yearSummary);
+        yearSection.appendChild(yearList);
+        pastContainer.appendChild(yearSection);
+      });
+
+    function createShowEntry(show) {
       const displayOrder = [...show.bands];
       displayOrder.reverse();
       const summaryText = `${formatDate(show.date)} - ${show.name ? `${show.name} - ` : ''}${displayOrder.join(', ')} - ${show.venue} - ${show.location}`;
@@ -229,13 +270,8 @@
 
       li.appendChild(summary);
       li.appendChild(details);
-
-      if (showDate >= todayStart) {
-        upcomingList.appendChild(li);
-      } else {
-        pastList.appendChild(li);
-      }
-    });
+      return li;
+    }
 
     function formatDate(dateStr) {
       const options = { year: 'numeric', month: 'short', day: 'numeric' };
