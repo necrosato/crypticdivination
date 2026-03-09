@@ -206,6 +206,36 @@ footer a {
   gap: 0.75rem;
 }
 
+#past-shows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.past-year-group {
+  width: min(880px, 100%);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.72);
+  padding: 0.8rem 1rem;
+}
+
+.past-year-summary {
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.08em;
+  list-style: none;
+}
+
+.past-year-summary::-webkit-details-marker {
+  display: none;
+}
+
+.past-year-list {
+  margin-top: 0.8rem;
+}
+
 .show-entry {
   width: min(880px, 100%);
   border: 1px solid var(--line);
