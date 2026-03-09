@@ -225,6 +225,11 @@ footer a {
   font-weight: bold;
   text-align: center;
   letter-spacing: 0.08em;
+  list-style: none;
+}
+
+.past-year-summary::-webkit-details-marker {
+  display: none;
 }
 
 .past-year-list {
