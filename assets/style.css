@@ -84,6 +84,13 @@ footer {
   border: 1px solid var(--line);
 }
 
+.volume-heading {
+  margin: 0 0 0.75rem;
+  text-align: center;
+  letter-spacing: 0.06em;
+  font-size: clamp(1rem, 2.6vw, 1.5rem);
+}
+
 .youtube-video iframe {
   width: 100%;
   border: 1px solid var(--line);
