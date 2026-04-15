@@ -270,3 +270,37 @@ footer a {
 .show-details a {
   color: #bfc7ff;
 }
+
+.about-page {
+  position: relative;
+}
+
+.about-members,
+.about-bio {
+  width: min(960px, 100%);
+  border: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.78);
+  padding: 1rem 1.25rem;
+}
+
+.about-members h2,
+.about-bio h2 {
+  margin-top: 0;
+  text-align: center;
+  letter-spacing: 0.08em;
+}
+
+.about-members ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.45rem;
+  text-align: center;
+}
+
+.about-bio p {
+  margin: 0;
+  line-height: 1.5;
+  text-align: center;
+}
