@@ -309,7 +309,6 @@ footer a {
   top: 5%;
   left: 50%;
   width: 55%;
-  max-width: 620px;
   transform: translate(-50%, -5%);
   filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.85));
 }
