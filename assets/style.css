@@ -89,7 +89,6 @@ footer {
 }
 
 .band-photo-crop .band-photo {
-  margin-top: -10%;
   margin-bottom: -25%;
 }
 
@@ -297,7 +296,6 @@ footer a {
   display: block;
   width: 100%;
   height: auto;
-  margin-top: -10%;
 }
 
 .about-overlay {
@@ -307,12 +305,15 @@ footer a {
   flex-direction: column;
   align-items: center;
   pointer-events: none;
+  justify-content: flex-start;
 }
 
 .about-overlay-logo {
-  width: clamp(260px, 55vw, 620px);
-  max-width: 90%;
-  margin: clamp(1rem, 6vw, 4rem) auto 0;
+  width: 55%;
+  max-width: 620px;
+  min-width: 220px;
+  margin: 0.8rem auto 0;
+  transform: translateY(-5%);
   filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.85));
 }
 
@@ -323,7 +324,7 @@ footer a {
   justify-content: center;
   gap: 0.6rem;
   padding: 0.6rem;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.75);
   pointer-events: auto;
 }
 
