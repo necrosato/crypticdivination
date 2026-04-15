@@ -84,14 +84,6 @@ footer {
   border: 1px solid var(--line);
 }
 
-.band-photo-crop {
-  overflow: hidden;
-}
-
-.band-photo-crop .band-photo {
-  margin-bottom: -25%;
-}
-
 .youtube-video iframe {
   width: 100%;
   border: 1px solid var(--line);
@@ -371,4 +363,3 @@ footer a {
     padding: 0.45rem;
   }
 }
-
