@@ -296,9 +296,7 @@ footer a {
 .about-hero-image {
   display: block;
   width: 100%;
-  height: clamp(420px, 72vw, 900px);
-  object-fit: cover;
-  object-position: center 32%;
+  height: auto;
 }
 
 .about-overlay {
@@ -314,7 +312,6 @@ footer a {
   width: clamp(260px, 55vw, 620px);
   max-width: 90%;
   margin: 1.2rem auto 0;
-  transform: translateY(-50%);
   filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.85));
 }
 
