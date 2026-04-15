@@ -85,7 +85,12 @@ footer {
 }
 
 .volume-heading {
-  margin: 0 0 0.75rem;
+  width: fit-content;
+  margin: 0 auto 0.75rem;
+  padding: 0.65rem 0.9rem;
+  background: #000;
+  border: 1px solid var(--line);
+  border-radius: 6px;
   text-align: center;
   letter-spacing: 0.06em;
   font-size: clamp(1rem, 2.6vw, 1.5rem);
