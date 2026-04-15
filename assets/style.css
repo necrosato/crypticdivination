@@ -20,7 +20,7 @@ body {
   background: var(--bg);
   color: var(--fg);
   font-family: 'Cryptic', sans-serif;
-  padding-bottom: 90px;
+  padding-bottom: calc(90px + env(safe-area-inset-bottom, 0));
 }
 
 .v2-page {
@@ -114,9 +114,10 @@ footer a {
 
 .audio-player {
   position: fixed;
-  bottom: 0;
+  bottom: env(safe-area-inset-bottom, 0);
   left: 0;
   right: 0;
+  width: 100%;
   background: rgba(0, 0, 0, 0.9);
   padding: 10px 20px;
   display: flex;
@@ -135,6 +136,12 @@ footer a {
 .audio-player audio {
   flex: 1;
   max-width: 320px;
+}
+
+@supports (height: 100dvh) {
+  .home-page {
+    min-height: 100dvh;
+  }
 }
 
 @media (max-width: 640px) {
