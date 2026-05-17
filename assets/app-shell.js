@@ -8,7 +8,6 @@
     if (url.origin !== window.location.origin) return false;
     if (url.protocol !== 'http:' && url.protocol !== 'https:') return false;
     if (url.hash && url.pathname === window.location.pathname && !url.search) return false;
-    if (url.pathname.endsWith('/shows.html') || url.pathname === '/shows.html') return false;
     return INTERNAL_PAGE_PATTERN.test(url.pathname);
   }
 
@@ -54,6 +53,16 @@
     });
   }
 
+  function runInlineScriptsFromDocument(doc) {
+    const bodyScripts = doc.querySelectorAll('body script:not([src])');
+    bodyScripts.forEach(function (script) {
+      if (script.type && script.type !== 'text/javascript') return;
+      const content = script.textContent ? script.textContent.trim() : '';
+      if (!content) return;
+      Function(content)();
+    });
+  }
+
   async function loadPage(url, pushState) {
     const response = await fetch(url, { headers: { 'X-Requested-With': 'spa-nav' } });
     if (!response.ok) throw new Error('Navigation fetch failed');
@@ -74,13 +83,10 @@
     }
 
     wireMusicTrackButtons(document);
+    runInlineScriptsFromDocument(doc);
 
     if (pushState) {
       history.pushState({ path: url }, '', url);
-    }
-
-    if (typeof window.initializeShowsPage === 'function') {
-      window.initializeShowsPage();
     }
   }
 
