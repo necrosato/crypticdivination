@@ -6,6 +6,32 @@
   <meta name="description" content="Cryptic Divination shows and live dates" />
   <title>Cryptic Divination | Shows</title>
   <link rel="stylesheet" href="assets/style.css">
+  
+</head>
+<body class="shows-page">
+  <div class="shows-background" aria-hidden="true"></div>
+
+  <main class="v2-page">
+    <section class="logo-section" aria-label="Band logo">
+      <div class="logo-crop">
+        <img src="assets/Cryptic%20Divination%20N%20L%20W.png" alt="Cryptic Divination N L W logo" class="logo-image">
+      </div>
+    </section>
+
+    <nav class="links" aria-label="Shows navigation">
+      <a href="index.html">Home</a>
+      <a href="#upcoming">Upcoming</a>
+      <a href="#past">Past</a>
+    </nav>
+
+    <section class="shows-list" aria-label="Show dates">
+      <h2 id="upcoming">Upcoming Shows</h2>
+      <ul id="upcoming-shows"></ul>
+
+      <h2 id="past">Past Shows</h2>
+      <div id="past-shows"></div>
+    </section>
+
   <script id="show-data" type="application/json">
   [
     {
@@ -152,35 +178,13 @@
     }
   ]
   </script>
-</head>
-<body class="shows-page">
-  <div class="shows-background" aria-hidden="true"></div>
-
-  <main class="v2-page">
-    <section class="logo-section" aria-label="Band logo">
-      <div class="logo-crop">
-        <img src="assets/Cryptic%20Divination%20N%20L%20W.png" alt="Cryptic Divination N L W logo" class="logo-image">
-      </div>
-    </section>
-
-    <nav class="links" aria-label="Shows navigation">
-      <a href="index.html">Home</a>
-      <a href="#upcoming">Upcoming</a>
-      <a href="#past">Past</a>
-    </nav>
-
-    <section class="shows-list" aria-label="Show dates">
-      <h2 id="upcoming">Upcoming Shows</h2>
-      <ul id="upcoming-shows"></ul>
-
-      <h2 id="past">Past Shows</h2>
-      <div id="past-shows"></div>
-    </section>
   </main>
 
   <footer>
     <p>&copy; 2024 Cryptic Divination. All rights reserved. | Follow us on <a href="https://www.instagram.com/crypticdivination/" target="_blank" rel="noopener noreferrer">Instagram</a> and <a href="https://www.youtube.com/@crypticdivination1886" target="_blank" rel="noopener noreferrer">YouTube</a>.</p>
   </footer>
+
+
 
   <script>
     const shows = JSON.parse(document.getElementById('show-data').textContent);
