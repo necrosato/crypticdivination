@@ -1,40 +1,50 @@
 (function () {
-  function createShowEntry(show) {
-    const li = document.createElement('li');
-    li.className = 'show-entry';
-
-    const head = document.createElement('p');
-    head.className = 'show-headline';
-    const date = new Date(show.date).toLocaleDateString(undefined, {
+  function formatDate(dateString) {
+    return new Date(dateString).toLocaleDateString(undefined, {
       year: 'numeric',
       month: 'short',
       day: 'numeric'
     });
-    head.textContent = `${date} — ${show.venue} (${show.location})`;
-    li.appendChild(head);
+  }
 
-    const bands = document.createElement('p');
-    bands.textContent = show.bands.join(' • ');
-    li.appendChild(bands);
+  function createShowEntry(show) {
+    const displayOrder = Array.isArray(show.bands) ? [...show.bands].reverse() : [];
+    const summaryText = `${formatDate(show.date)} - ${show.name ? `${show.name} - ` : ''}${displayOrder.join(', ')} - ${show.venue} - ${show.location}`;
 
-    if (show.name) {
-      const name = document.createElement('p');
-      name.textContent = show.name;
-      li.appendChild(name);
+    const li = document.createElement('li');
+    li.className = 'show-entry';
+
+    const summary = document.createElement('div');
+    summary.className = 'show-summary';
+    summary.textContent = summaryText;
+
+    const details = document.createElement('div');
+    details.className = 'show-details';
+    details.innerHTML = `
+      <strong>Date:</strong> ${formatDate(show.date)}<br>
+      <strong>Venue:</strong> ${show.venue}<br>
+      <strong>Location:</strong> ${show.location}<br>
+      <strong>Lineup:</strong>
+      <ol>${(show.bands || []).map((band) => `<li>${band}</li>`).join('')}</ol>
+    `;
+
+    if (Array.isArray(show.links) && show.links.length > 0) {
+      details.innerHTML += `
+        <strong>Links:</strong>
+        <ol>${show.links.map((link) => `<li><a href="${link}" target="_blank" rel="noopener noreferrer">${link}</a></li>`).join('')}</ol>
+      `;
     }
 
     if (show.info) {
-      const info = document.createElement('p');
-      info.textContent = show.info;
-      li.appendChild(info);
+      details.innerHTML += `<p>${show.info}</p>`;
     }
 
-    if (Array.isArray(show.links) && show.links.length > 0) {
-      const links = document.createElement('p');
-      links.innerHTML = show.links.map((link) => `<a href="${link}" target="_blank" rel="noopener noreferrer">Ticket link</a>`).join(' ');
-      li.appendChild(links);
-    }
+    li.addEventListener('click', function () {
+      details.style.display = details.style.display === 'block' ? 'none' : 'block';
+    });
 
+    li.appendChild(summary);
+    li.appendChild(details);
     return li;
   }
 
@@ -61,11 +71,15 @@
     upcomingHeading.textContent = `Upcoming Shows (${upcoming.length})`;
     pastHeading.textContent = `Past Shows (${past.length})`;
 
-    upcoming.forEach((show) => upcomingList.appendChild(createShowEntry(show)));
+    upcoming.forEach((show) => {
+      upcomingList.appendChild(createShowEntry(show));
+    });
 
     const pastShowsByYear = past.reduce((groups, show) => {
       const year = new Date(show.date).getFullYear();
-      groups[year] = groups[year] || [];
+      if (!groups[year]) {
+        groups[year] = [];
+      }
       groups[year].push(show);
       return groups;
     }, {});
@@ -73,13 +87,22 @@
     Object.keys(pastShowsByYear)
       .sort((a, b) => Number(b) - Number(a))
       .forEach((year) => {
-        const sectionHeading = document.createElement('h3');
-        sectionHeading.textContent = year;
-        pastContainer.appendChild(sectionHeading);
+        const yearSection = document.createElement('details');
+        yearSection.className = 'past-year-group';
 
-        const list = document.createElement('ul');
-        pastShowsByYear[year].forEach((show) => list.appendChild(createShowEntry(show)));
-        pastContainer.appendChild(list);
+        const yearSummary = document.createElement('summary');
+        yearSummary.className = 'past-year-summary';
+        yearSummary.textContent = `${year} (${pastShowsByYear[year].length})`;
+
+        const yearList = document.createElement('ul');
+        yearList.className = 'past-year-list';
+        pastShowsByYear[year].forEach((show) => {
+          yearList.appendChild(createShowEntry(show));
+        });
+
+        yearSection.appendChild(yearSummary);
+        yearSection.appendChild(yearList);
+        pastContainer.appendChild(yearSection);
       });
   };
 
