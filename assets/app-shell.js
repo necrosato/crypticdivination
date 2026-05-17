@@ -11,6 +11,48 @@
     return INTERNAL_PAGE_PATTERN.test(url.pathname);
   }
 
+  function getSharedPlayer() {
+    const player = document.querySelector('.audio-player');
+    if (!player) return null;
+    const title = player.querySelector('.track-title');
+    const audio = player.querySelector('audio');
+    if (!title || !audio) return null;
+    return { player, title, audio };
+  }
+
+  function loadTrack(trackName, trackSrc, shouldAutoplay) {
+    const shared = getSharedPlayer();
+    if (!shared || !trackName || !trackSrc) return;
+
+    const activeSource = shared.audio.querySelector('source');
+    if (activeSource && activeSource.src === new URL(trackSrc, window.location.href).href && !shared.audio.paused) {
+      return;
+    }
+
+    shared.title.textContent = trackName;
+    if (activeSource) {
+      activeSource.src = trackSrc;
+    } else {
+      shared.audio.src = trackSrc;
+    }
+    shared.audio.load();
+
+    if (shouldAutoplay) {
+      shared.audio.play().catch(function () {
+        // Playback may be blocked by browser autoplay policy.
+      });
+    }
+  }
+
+  function wireMusicTrackButtons(root) {
+    const buttons = root.querySelectorAll('[data-track-src][data-track-name]');
+    buttons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        loadTrack(button.dataset.trackName, button.dataset.trackSrc, true);
+      });
+    });
+  }
+
   async function loadPage(url, pushState) {
     const response = await fetch(url, { headers: { 'X-Requested-With': 'spa-nav' } });
     if (!response.ok) throw new Error('Navigation fetch failed');
@@ -29,6 +71,8 @@
     if (doc.body && doc.body.className !== undefined) {
       document.body.className = doc.body.className;
     }
+
+    wireMusicTrackButtons(document);
 
     if (pushState) {
       history.pushState({ path: url }, '', url);
@@ -57,4 +101,6 @@
       window.location.reload();
     });
   });
+
+  wireMusicTrackButtons(document);
 })();
