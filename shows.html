@@ -59,7 +59,7 @@
       "date": "2026/05/03",
       "venue": "Twilight Cafe and Bar",
       "location": "Portland, OR",
-      "bands": ["Blut auf dem Eis", "Cryptic Divination", "Fosphene", "Gathering"]
+      "bands": ["Cryptic Divination", "Fosphene", "Gathering"]
     },
     {
       "date": "2026/06/19",
@@ -284,5 +284,16 @@
       return new Date(dateStr).toLocaleDateString(undefined, options);
     }
   </script>
+
+
+  <div class="audio-player" aria-label="Feigned Absolutions audio player">
+    <p class="track-title">Feigned Absolutions</p>
+    <audio controls preload="metadata">
+      <source src="assets/Cryptic%20Divination%20Volume%20I/1.%20Feigned%20Absolutions.wav" type="audio/wav">
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+
+  <script src="assets/app-shell.js"></script>
 </body>
 </html>
