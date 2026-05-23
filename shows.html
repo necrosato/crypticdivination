@@ -51,7 +51,9 @@
       "links": [
           "https://www.simpletix.com/e/pentagram-tickets-198154"
       ],
-      "name": "Our First Show"
+      "name": "Our First Show",
+      "doors": "20:00",
+      "music": "21:00"
     },
     {
       "date": "2025/03/29",
@@ -69,13 +71,17 @@
       "date": "2025/04/24",
       "venue": "John Henry's",
       "location": "Eugene, OR",
-      "bands": ["Cryptic Divination", "Silver Talon", "Blood Star SLC"]
+      "bands": ["Cryptic Divination", "Silver Talon", "Blood Star SLC"],
+      "doors": "20:00",
+      "music": "21:00"
     },
     {
       "date": "2026/04/30",
       "venue": "John Henry's",
       "location": "Eugene, OR",
-      "bands": ["Redivivus", "Gathering", "Cryptic Divination"]
+      "bands": ["Redivivus", "Gathering", "Cryptic Divination"],
+      "doors": "20:00",
+      "music": "21:00"
     },
     {
       "date": "2026/05/01",
@@ -93,7 +99,9 @@
       "date": "2026/06/19",
       "venue": "John Henry's",
       "location": "Eugene, OR",
-      "bands": ["Cryptic Divination", "Gamma Knife", "Gürschach", "Nox Sinister"]
+      "bands": ["Cryptic Divination", "Gamma Knife", "Gürschach", "Nox Sinister"],
+      "doors": "20:00",
+      "music": "21:00"
     },
     {
       "date": "2026/06/21",
@@ -105,13 +113,17 @@
       "date": "2025/06/21",
       "venue": "John Henry's",
       "location": "Eugene, OR",
-      "bands": ["The Unbridled", "Fire Priestess", "Cryptic Divination"]
+      "bands": ["The Unbridled", "Fire Priestess", "Cryptic Divination"],
+      "doors": "20:00",
+      "music": "21:00"
     },
     {
       "date": "2026/08/21",
       "venue": "John Henry's",
       "location": "Eugene, OR",
-      "bands": ["Cryptic Divination", "Vesseles", "TBA"]
+      "bands": ["Cryptic Divination", "Vesseles", "TBA"],
+      "doors": "20:00",
+      "music": "21:00"
     },
     {
       "date": "2026/08/23",
@@ -123,7 +135,9 @@
       "date": "2026/09/25",
       "venue": "John Henry's",
       "location": "Eugene, OR",
-      "bands": ["Cryptic Divination", "Ghorot", "TBA"]
+      "bands": ["Cryptic Divination", "Ghorot", "TBA"],
+      "doors": "20:00",
+      "music": "21:00"
     },
     {
       "date": "2026/07/24",
@@ -135,7 +149,9 @@
       "date": "2026/07/03",
       "venue": "John Henry's",
       "location": "Eugene, OR",
-      "bands": ["Maulrat", "Veil of Ashes", "Cryptic Divination"]
+      "bands": ["Maulrat", "Veil of Ashes", "Cryptic Divination"],
+      "doors": "20:00",
+      "music": "21:00"
     },
     {
       "date": "2025/07/30",
@@ -149,13 +165,17 @@
       "venue": "John Henry's",
       "location": "Eugene, OR",
       "bands": ["Mike Scheidt", "Flatulent Sermon", "Cryptic Divination"],
-      "name": "Masako Poole Celebration of Life"
+      "name": "Masako Poole Celebration of Life",
+      "doors": "20:00",
+      "music": "21:00"
     },
     {
       "date": "2025/09/12",
       "venue": "John Henry's",
       "location": "Eugene, OR",
-      "bands": ["Cryptic Divination", "Paralicyst", "Gravewitch"]
+      "bands": ["Cryptic Divination", "Paralicyst", "Gravewitch"],
+      "doors": "20:00",
+      "music": "21:00"
     },
     {
       "date": "2025/10/18",
@@ -167,7 +187,9 @@
       "date": "2025/11/06",
       "venue": "John Henry's",
       "location": "Eugene, OR",
-      "bands": ["Cryptic Divination", "Hallucinator", "Tithe"]
+      "bands": ["Cryptic Divination", "Hallucinator", "Tithe"],
+      "doors": "20:00",
+      "music": "21:00"
     },
     {
       "date": "2025/12/20",
@@ -188,7 +210,9 @@
       "date": "2026/01/16",
       "venue": "John Henry's",
       "location": "Eugene, OR",
-      "bands": ["Blödsinn", "Cryptic Divination", "Entresol"]
+      "bands": ["Blödsinn", "Cryptic Divination", "Entresol"],
+      "doors": "20:00",
+      "music": "21:00"
     },
     {
       "date": "2026/03/13",
@@ -200,7 +224,9 @@
       "date": "2026/03/27",
       "venue": "John Henry's",
       "location": "Eugene, OR",
-      "bands": ["Cryptic Divination", "Maulrat", "Redivivus"]
+      "bands": ["Cryptic Divination", "Maulrat", "Redivivus"],
+      "doors": "20:00",
+      "music": "21:00"
     }
   ]
   </script>
@@ -285,6 +311,8 @@
         <strong>Date:</strong> ${formatDate(show.date)}<br>
         <strong>Venue:</strong> ${show.venue}<br>
         <strong>Location:</strong> ${show.location}<br>
+        ${show.doors ? `<strong>Doors:</strong> ${formatTime(show.doors)}<br>` : ''}
+        ${show.music ? `<strong>Music:</strong> ${formatTime(show.music)}<br>` : ''}
         <strong>Lineup:</strong>
         <ol>${show.bands.map((band) => `<li>${band}</li>`).join('')}</ol>
       `;
@@ -321,15 +349,14 @@
 
     function createCalendarEventLink(show) {
       const eventDate = new Date(show.date);
-      const eventStart = new Date(eventDate);
-      eventStart.setHours(19, 0, 0, 0);
-      const eventEnd = new Date(eventStart);
-      eventEnd.setHours(eventEnd.getHours() + 3);
-
       const eventTitle = show.name ? show.name : `${show.bands.join(', ')} at ${show.venue}`;
-      const eventDescription = `Lineup: ${show.bands.join(', ')}${show.info ? `\nInfo: ${show.info}` : ''}`;
+      const eventDescription = `Lineup: ${show.bands.join(', ')}\nStart time: TBA${show.info ? `\nInfo: ${show.info}` : ''}`;
       const eventLocation = `${show.venue}, ${show.location}`;
       const uid = `${show.date.replaceAll('/', '')}-${show.venue.replace(/[^a-z0-9]/gi, '').toLowerCase()}@crypticdivination.com`;
+      const hasTimedStart = Boolean(show.doors || show.music);
+      const icsEventTiming = hasTimedStart
+        ? createTimedEvent(show, eventDate)
+        : createAllDayEvent(eventDate);
 
       const ics = [
         'BEGIN:VCALENDAR',
@@ -338,8 +365,7 @@
         'BEGIN:VEVENT',
         `UID:${uid}`,
         `DTSTAMP:${formatIcsDate(new Date())}`,
-        `DTSTART:${formatIcsDate(eventStart)}`,
-        `DTEND:${formatIcsDate(eventEnd)}`,
+        ...icsEventTiming,
         `SUMMARY:${escapeIcsText(eventTitle)}`,
         `LOCATION:${escapeIcsText(eventLocation)}`,
         `DESCRIPTION:${escapeIcsText(eventDescription)}`,
@@ -350,6 +376,32 @@
       return `data:text/calendar;charset=utf-8,${encodeURIComponent(ics)}`;
     }
 
+
+    function createTimedEvent(show, eventDate) {
+      const eventStart = new Date(eventDate);
+      const startTime = show.doors || show.music;
+      const [hours, minutes] = startTime.split(':').map(Number);
+      eventStart.setHours(hours, minutes, 0, 0);
+
+      const eventEnd = new Date(eventDate);
+      eventEnd.setHours(23, 59, 59, 0);
+
+      return [
+        `DTSTART:${formatIcsDate(eventStart)}`,
+        `DTEND:${formatIcsDate(eventEnd)}`
+      ];
+    }
+
+    function createAllDayEvent(eventDate) {
+      const eventEnd = new Date(eventDate);
+      eventEnd.setDate(eventEnd.getDate() + 1);
+
+      return [
+        `DTSTART;VALUE=DATE:${formatIcsDay(eventDate)}`,
+        `DTEND;VALUE=DATE:${formatIcsDay(eventEnd)}`
+      ];
+    }
+
     function createCalendarFileName(show) {
       return `cryptic-divination-${show.date.replaceAll('/', '-')}.ics`;
     }
@@ -358,12 +410,24 @@
       return date.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
     }
 
+    function formatIcsDay(date) {
+      return date.toISOString().split('T')[0].replace(/-/g, '');
+    }
+
     function escapeIcsText(text) {
       return text
         .replace(/\\/g, '\\\\')
         .replace(/\n/g, '\\n')
         .replace(/,/g, '\\,')
         .replace(/;/g, '\\;');
+    }
+
+
+    function formatTime(timeStr) {
+      const [hours, minutes] = timeStr.split(':').map(Number);
+      const date = new Date();
+      date.setHours(hours, minutes, 0, 0);
+      return date.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
     }
 
     function formatDate(dateStr) {
