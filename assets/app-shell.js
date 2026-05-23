@@ -44,6 +44,15 @@
     }
   }
 
+
+  function tryAutoplaySharedPlayer() {
+    const shared = getSharedPlayer();
+    if (!shared) return;
+    shared.audio.play().catch(function () {
+      // Playback may be blocked by browser autoplay policy.
+    });
+  }
+
   function wireMusicTrackButtons(root) {
     const buttons = root.querySelectorAll('[data-track-src][data-track-name]');
     buttons.forEach(function (button) {
@@ -84,6 +93,7 @@
 
     wireMusicTrackButtons(document);
     runInlineScriptsFromDocument(doc);
+    tryAutoplaySharedPlayer();
 
     if (pushState) {
       history.pushState({ path: url }, '', url);
@@ -110,4 +120,5 @@
   });
 
   wireMusicTrackButtons(document);
+  tryAutoplaySharedPlayer();
 })();
