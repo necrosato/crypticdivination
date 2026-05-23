@@ -52,7 +52,7 @@ footer {
   filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.08));
 }
 
-.links {
+.site-nav {
   width: min(960px, 100%);
   display: flex;
   flex-wrap: wrap;
@@ -60,7 +60,7 @@ footer {
   gap: 0.75rem;
 }
 
-.links a {
+.site-nav a {
   color: var(--fg);
   text-decoration: none;
   border: 1px solid var(--line);
@@ -72,8 +72,8 @@ footer {
   transition: border-color 0.2s ease, color 0.2s ease;
 }
 
-.links a:hover,
-.links a:focus-visible {
+.site-nav a:hover,
+.site-nav a:focus-visible {
   color: var(--muted);
   border-color: #575757;
 }
@@ -154,13 +154,14 @@ footer a {
     width: min(420px, 100%);
   }
 
-  .links {
+  .site-nav {
     gap: 0.55rem;
   }
 
-  .links a {
-    width: 100%;
+  .site-nav a {
     text-align: center;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.74rem;
   }
 
   .audio-player {
@@ -325,27 +326,6 @@ footer a {
   filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.85));
 }
 
-.about-control-bar {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.6rem;
-  padding: 0.6rem;
-  background: rgba(0, 0, 0, 0.75);
-  pointer-events: auto;
-}
-
-.about-control-bar a {
-  color: var(--fg);
-  text-decoration: none;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  background: rgba(0, 0, 0, 0.65);
-  padding: 0.45rem 0.8rem;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  font-size: clamp(0.68rem, 1.35vw, 0.85rem);
-}
 
 .about-members,
 .about-bio {
@@ -375,13 +355,6 @@ footer a {
   margin: 0;
   line-height: 1.5;
   text-align: center;
-}
-
-@media (max-width: 640px) {
-  .about-control-bar {
-    gap: 0.4rem;
-    padding: 0.45rem;
-  }
 }
 
 .music-app {
