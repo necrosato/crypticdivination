@@ -350,7 +350,7 @@
     function createCalendarEventLink(show) {
       const eventDate = new Date(show.date);
       const eventTitle = show.name ? show.name : `${show.bands.join(', ')} at ${show.venue}`;
-      const eventDescription = `Lineup: ${show.bands.join(', ')}\nStart time: TBA${show.info ? `\nInfo: ${show.info}` : ''}`;
+      const eventDescription = createCalendarEventDescription(show);
       const eventLocation = `${show.venue}, ${show.location}`;
       const uid = `${show.date.replaceAll('/', '')}-${show.venue.replace(/[^a-z0-9]/gi, '').toLowerCase()}@crypticdivination.com`;
       const hasTimedStart = Boolean(show.doors || show.music);
@@ -376,6 +376,42 @@
       return `data:text/calendar;charset=utf-8,${encodeURIComponent(ics)}`;
     }
 
+
+
+    function createCalendarEventDescription(show) {
+      const lines = [
+        `Date: ${formatDate(show.date)}`,
+        `Venue: ${show.venue}`,
+        `Location: ${show.location}`
+      ];
+
+      if (show.doors) {
+        lines.push(`Doors: ${formatTime(show.doors)}`);
+      }
+
+      if (show.music) {
+        lines.push(`Music: ${formatTime(show.music)}`);
+      }
+
+      lines.push('Lineup:');
+      show.bands.forEach((band, index) => {
+        lines.push(`${index + 1}. ${band}`);
+      });
+
+      if (show.links) {
+        lines.push('Links:');
+        show.links.forEach((link, index) => {
+          lines.push(`${index + 1}. ${link}`);
+        });
+      }
+
+      if (show.info) {
+        lines.push('');
+        lines.push(show.info);
+      }
+
+      return lines.join('\n');
+    }
 
     function createTimedEvent(show, eventDate) {
       const eventStart = new Date(eventDate);
