@@ -51,7 +51,9 @@
       "links": [
           "https://www.simpletix.com/e/pentagram-tickets-198154"
       ],
-      "name": "Our First Show"
+      "name": "Our First Show",
+      "doors": "20:00",
+      "music": "21:00"
     },
     {
       "date": "2025/03/29",
@@ -69,13 +71,17 @@
       "date": "2025/04/24",
       "venue": "John Henry's",
       "location": "Eugene, OR",
-      "bands": ["Cryptic Divination", "Silver Talon", "Blood Star SLC"]
+      "bands": ["Cryptic Divination", "Silver Talon", "Blood Star SLC"],
+      "doors": "20:00",
+      "music": "21:00"
     },
     {
       "date": "2026/04/30",
       "venue": "John Henry's",
       "location": "Eugene, OR",
-      "bands": ["Redivivus", "Gathering", "Cryptic Divination"]
+      "bands": ["Redivivus", "Gathering", "Cryptic Divination"],
+      "doors": "20:00",
+      "music": "21:00"
     },
     {
       "date": "2026/05/01",
@@ -93,7 +99,9 @@
       "date": "2026/06/19",
       "venue": "John Henry's",
       "location": "Eugene, OR",
-      "bands": ["Cryptic Divination", "Gamma Knife", "Gürschach", "Nox Sinister"]
+      "bands": ["Cryptic Divination", "Gamma Knife", "Gürschach", "Nox Sinister"],
+      "doors": "20:00",
+      "music": "21:00"
     },
     {
       "date": "2026/06/21",
@@ -105,13 +113,17 @@
       "date": "2025/06/21",
       "venue": "John Henry's",
       "location": "Eugene, OR",
-      "bands": ["The Unbridled", "Fire Priestess", "Cryptic Divination"]
+      "bands": ["The Unbridled", "Fire Priestess", "Cryptic Divination"],
+      "doors": "20:00",
+      "music": "21:00"
     },
     {
       "date": "2026/08/21",
       "venue": "John Henry's",
       "location": "Eugene, OR",
-      "bands": ["Cryptic Divination", "Vesseles", "TBA"]
+      "bands": ["Cryptic Divination", "Vesseles", "TBA"],
+      "doors": "20:00",
+      "music": "21:00"
     },
     {
       "date": "2026/08/23",
@@ -299,6 +311,8 @@
         <strong>Date:</strong> ${formatDate(show.date)}<br>
         <strong>Venue:</strong> ${show.venue}<br>
         <strong>Location:</strong> ${show.location}<br>
+        ${show.doors ? `<strong>Doors:</strong> ${formatTime(show.doors)}<br>` : ''}
+        ${show.music ? `<strong>Music:</strong> ${formatTime(show.music)}<br>` : ''}
         <strong>Lineup:</strong>
         <ol>${show.bands.map((band) => `<li>${band}</li>`).join('')}</ol>
       `;
@@ -406,6 +420,14 @@
         .replace(/\n/g, '\\n')
         .replace(/,/g, '\\,')
         .replace(/;/g, '\\;');
+    }
+
+
+    function formatTime(timeStr) {
+      const [hours, minutes] = timeStr.split(':').map(Number);
+      const date = new Date();
+      date.setHours(hours, minutes, 0, 0);
+      return date.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
     }
 
     function formatDate(dateStr) {
