@@ -300,6 +300,16 @@
         details.innerHTML += `<p>${show.info}</p>`;
       }
 
+      const calendarButton = document.createElement('a');
+      calendarButton.className = 'calendar-button';
+      calendarButton.textContent = 'Add to Calendar';
+      calendarButton.href = createCalendarEventLink(show);
+      calendarButton.download = createCalendarFileName(show);
+      calendarButton.addEventListener('click', (event) => {
+        event.stopPropagation();
+      });
+      details.appendChild(calendarButton);
+
       li.addEventListener('click', () => {
         details.style.display = details.style.display === 'block' ? 'none' : 'block';
       });
@@ -307,6 +317,53 @@
       li.appendChild(summary);
       li.appendChild(details);
       return li;
+    }
+
+    function createCalendarEventLink(show) {
+      const eventDate = new Date(show.date);
+      const eventStart = new Date(eventDate);
+      eventStart.setHours(19, 0, 0, 0);
+      const eventEnd = new Date(eventStart);
+      eventEnd.setHours(eventEnd.getHours() + 3);
+
+      const eventTitle = show.name ? show.name : `${show.bands.join(', ')} at ${show.venue}`;
+      const eventDescription = `Lineup: ${show.bands.join(', ')}${show.info ? `\nInfo: ${show.info}` : ''}`;
+      const eventLocation = `${show.venue}, ${show.location}`;
+      const uid = `${show.date.replaceAll('/', '')}-${show.venue.replace(/[^a-z0-9]/gi, '').toLowerCase()}@crypticdivination.com`;
+
+      const ics = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Cryptic Divination//Shows//EN',
+        'BEGIN:VEVENT',
+        `UID:${uid}`,
+        `DTSTAMP:${formatIcsDate(new Date())}`,
+        `DTSTART:${formatIcsDate(eventStart)}`,
+        `DTEND:${formatIcsDate(eventEnd)}`,
+        `SUMMARY:${escapeIcsText(eventTitle)}`,
+        `LOCATION:${escapeIcsText(eventLocation)}`,
+        `DESCRIPTION:${escapeIcsText(eventDescription)}`,
+        'END:VEVENT',
+        'END:VCALENDAR'
+      ].join('\r\n');
+
+      return `data:text/calendar;charset=utf-8,${encodeURIComponent(ics)}`;
+    }
+
+    function createCalendarFileName(show) {
+      return `cryptic-divination-${show.date.replaceAll('/', '-')}.ics`;
+    }
+
+    function formatIcsDate(date) {
+      return date.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+    }
+
+    function escapeIcsText(text) {
+      return text
+        .replace(/\\/g, '\\\\')
+        .replace(/\n/g, '\\n')
+        .replace(/,/g, '\\,')
+        .replace(/;/g, '\\;');
     }
 
     function formatDate(dateStr) {

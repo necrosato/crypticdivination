@@ -284,6 +284,25 @@ footer a {
   color: #bfc7ff;
 }
 
+.calendar-button {
+  display: inline-block;
+  margin-top: 0.5rem;
+  border: 1px solid var(--line);
+  padding: 0.45rem 0.75rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.8rem;
+  color: var(--fg);
+  background: #000;
+}
+
+.calendar-button:hover,
+.calendar-button:focus-visible {
+  color: var(--muted);
+  border-color: #575757;
+}
+
 
 .about-page {
   position: relative;
